@@ -1,65 +1,77 @@
 import Image from "next/image";
+import Navbar from "./components/Navbar";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Benefits from "./components/Benefits";
+import Prices from "./components/Prices";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="bg-white">
+      <div className="h-screen max-h-screen font-sans flex flex-col p-4 md:p-6 lg:p-6 pt-24 pb-4 md:pb-6 lg:pb-6 overflow-hidden" id="start">
+        <Navbar />
+
+        <main className="flex-1 w-full max-w-[1600px] mx-auto relative rounded-[32px] overflow-hidden shadow-2xl">
+          {/* Background Image */}
+          <Image
+            src="/businessmen.jpg"
+            alt="Business professionals"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+
+          {/* Gradient Overlay using #1d4ed8 */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1d4ed8] via-[#1d4ed8]/90 to-transparent w-full md:w-4/5 lg:w-2/3" />
+
+          {/* Content Container */}
+          <div className="relative h-full z-10 flex flex-col justify-center px-8 md:px-16 lg:px-20">
+            <div className="max-w-2xl">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-5">
+                Start your own business <br />
+                <span className="text-blue-200">in the united states</span><br />
+                as a foreigner.
+              </h1>
+
+              <p className="text-blue-100/90 text-base md:text-lg leading-relaxed mb-8 max-w-lg font-light">
+                We help businesses refine strategy, strengthen operations, scale with
+                confidence through data-driven consulting and practical execution.
+              </p>
+
+              <button className="flex items-center gap-2 bg-white text-[#1d4ed8] px-6 py-3 rounded-full font-semibold hover:bg-gray-50 transition-colors shadow-lg">
+                Book a Call <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Floating Glassmorphism Stats Card */}
+          <div className="absolute bottom-6 right-8 bg-black/20 backdrop-blur-md border border-white/20 rounded-[20px] p-5 text-white max-w-[240px] shadow-2xl hidden md:block">
+            <div className="flex items-center mb-3">
+              {/* Fake avatars */}
+              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-gray-300 relative z-30 overflow-hidden">
+                <Image src="/hero_business_men.png" alt="User" fill className="object-cover" />
+              </div>
+              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-gray-400 relative z-20 -ml-3 overflow-hidden">
+                <Image src="/hero_business_men.png" alt="User" fill className="object-cover object-right" />
+              </div>
+              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-gray-500 relative z-10 -ml-3 overflow-hidden">
+                <Image src="/hero_business_men.png" alt="User" fill className="object-cover object-left" />
+              </div>
+              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-[#1d4ed8] relative z-0 -ml-3 flex items-center justify-center text-white font-bold text-base">
+                +
+              </div>
+            </div>
+            <h3 className="text-3xl font-bold mb-1">30k+</h3>
+            <p className="text-xs text-gray-200 leading-snug">
+              Happy clients we have world-wide.
+            </p>
+          </div>
+        </main>
+      </div>
+
+      <WhyChooseUs />
+      <Benefits />
+      <Prices />
     </div>
   );
 }
