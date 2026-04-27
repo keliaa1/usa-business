@@ -1,45 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { Star, User, Lightbulb, TrendingUp, Wrench, ShieldCheck } from "lucide-react";
+import { Landmark, Shield, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const features = [
   {
     id: 0,
-    title: "Experience",
-    description: "Many years of work in this field is an excellent indicator that companies trust us and in response, we offer unique solutions.",
-    icon: Star,
+    title: "Business Bank Account",
+    description: "An FDIC-protected business bank account provides a secure foundation for your financial operations, ensuring funds are protected and offering easy access to banking services worldwide.",
+    icon: Landmark,
   },
   {
     id: 1,
-    title: "Expertise",
-    description: "Our team consists of highly qualified professionals who deeply understand the nuances of the US market and corporate structures.",
-    icon: User,
+    title: "Asset Protection",
+    description: "We prioritize privacy so your competition remains at a disadvantage. Names of owners and directors will not be disclosed in public records or indexed by internet search engines.",
+    icon: Shield,
   },
   {
     id: 2,
-    title: "Innovation",
-    description: "We utilize modern strategies and tools to provide efficient, fast, and reliable business structuring services.",
-    icon: Lightbulb,
-  },
-  {
-    id: 3,
-    title: "Growth",
-    description: "We focus on long-term scalability, ensuring your newly formed business is set up for continuous expansion.",
-    icon: TrendingUp,
-  },
-  {
-    id: 4,
-    title: "Support",
-    description: "Dedicated maintenance and continuous technical support to keep your operations running flawlessly.",
-    icon: Wrench,
-  },
-  {
-    id: 5,
-    title: "Security",
-    description: "Your data and legal processes are handled with the highest level of confidentiality and regulatory compliance.",
-    icon: ShieldCheck,
+    title: "Privacy Protection",
+    description: "Our high standard of privacy ensures competitors never get ahead. Owners and directors will never appear in public records, allowing you to operate with total peace of mind.",
+    icon: Lock,
   },
 ];
 
@@ -57,39 +39,37 @@ export default function WhyChooseUs() {
   // Hardcoded the 6 positions for perfect alignment in percentage:
   const getCoordinates = (index: number) => {
     const positions = [
-      { top: "15%", left: "85%" }, // Top right
-      { top: "50%", left: "100%" }, // Middle right
-      { top: "85%", left: "85%" }, // Bottom right
-      { top: "85%", left: "15%" }, // Bottom left
-      { top: "50%", left: "0%" },   // Middle left
-      { top: "15%", left: "15%" },   // Top left
+      { top: "10%", left: "50%" },   // Top
+      { top: "75%", left: "85%" },  // Bottom Right
+      { top: "75%", left: "15%" },  // Bottom Left
     ];
     return positions[index];
   };
 
   return (
-    <section className="py-16 bg-white relative overflow-hidden" id="why-choose-us">
+    <section className="py-32 bg-white relative overflow-hidden" id="why-choose-us">
       {/* Decorative background shape */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-[#f8faff] rounded-bl-[80px] -z-10" />
       
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="h-[2px] w-6 bg-[#1d4ed8]" />
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
-            <div className="h-[2px] w-6 bg-[#1d4ed8]" />
+            <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
+              WHY CHOOSE US
+            </span>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Choose Us</h2>
-          <p className="text-sm text-gray-500 max-w-2xl mx-auto">
-            Biggest brands in the industry recommend our company as a reliable corporate structuring partner.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[0.95] uppercase">
+            CHOOSE <br />
+            <span className="outline-text">OUR SERVICE</span>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-center">
           
           {/* Left Column - Circular Layout */}
-          <div className="relative w-full max-w-[380px] aspect-square mx-auto">
+          <div className="relative w-full max-w-[480px] aspect-square mx-auto">
             {/* The thin rotating dashed circle */}
             <div className="absolute inset-8 rounded-full border-2 border-dashed border-gray-200 animate-[spin_40s_linear_infinite]" />
 
@@ -130,7 +110,7 @@ export default function WhyChooseUs() {
                   }`}
                   style={{ top: pos.top, left: pos.left }}
                 >
-                  <Icon className={`w-5 h-5 md:w-6 md:h-6 ${isActive ? "text-white" : "text-[#1d4ed8]"}`} />
+                  <Icon className={`w-5 h-5 md:w-6 h-6 ${isActive ? "text-white" : "text-[#1d4ed8]"}`} />
                 </button>
               );
             })}
@@ -141,12 +121,12 @@ export default function WhyChooseUs() {
             {stats.map((stat, idx) => (
               <div key={idx} className="flex flex-col">
                 <div className="flex items-start mb-1">
-                  <span className="text-4xl lg:text-5xl font-bold text-gray-900 leading-none">
+                  <span className="text-3xl lg:text-4xl font-bold text-gray-900 leading-none">
                     {stat.value}
                   </span>
-                  <span className="text-xl font-bold text-[#1d4ed8] ml-1">+</span>
+                  <span className="text-lg font-bold text-[#1d4ed8] ml-1">+</span>
                 </div>
-                <span className="text-xs font-semibold text-gray-500 tracking-wider">
+                <span className="text-sm font-semibold text-gray-500 tracking-wider">
                   {stat.label}
                 </span>
               </div>

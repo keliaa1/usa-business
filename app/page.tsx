@@ -3,75 +3,93 @@ import Navbar from "./components/Navbar";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Benefits from "./components/Benefits";
 import Prices from "./components/Prices";
-import { ArrowRight } from "lucide-react";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import { ArrowRight, ChevronLeft, ChevronRight, Globe, Shield, Landmark } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="bg-white">
-      <div className="h-screen max-h-screen font-sans flex flex-col p-4 md:p-6 lg:p-6 pt-24 pb-4 md:pb-6 lg:pb-6 overflow-hidden" id="start">
-        <Navbar />
-
-        <main className="flex-1 w-full max-w-[1600px] mx-auto relative rounded-[32px] overflow-hidden shadow-2xl">
-          {/* Background Image */}
+    <div className="bg-white font-jost">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section className="relative h-[90vh] w-full flex items-center overflow-hidden" id="start">
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0 z-0">
           <Image
-            src="/businessmen.jpg"
-            alt="Business professionals"
+            src="/hero_bg.png"
+            alt="Business Background"
             fill
-            className="object-cover object-center"
+            unoptimized
+            className="object-cover brightness-[0.4]"
             priority
           />
+        </div>
 
-          {/* Gradient Overlay using #1d4ed8 */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1d4ed8] via-[#1d4ed8]/90 to-transparent w-full md:w-4/5 lg:w-2/3" />
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10 flex flex-col lg:flex-row justify-between items-center h-full pt-20">
+          {/* Left Content */}
+          <div className="max-w-3xl w-full">
+            <div className="flex items-center gap-2 mb-6 text-white/90">
+              <Globe className="w-4 h-4 text-[#1d4ed8]" />
+              <span className="text-xs font-bold tracking-widest uppercase">Welcome to My USA Business</span>
+            </div>
 
-          {/* Content Container */}
-          <div className="relative h-full z-10 flex flex-col justify-center px-8 md:px-16 lg:px-20">
-            <div className="max-w-2xl">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-5">
-                Start your own business <br />
-                <span className="text-blue-200">in the united states</span><br />
-                as a foreigner.
-              </h1>
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-5">
+              Start your business <br />
+              for <span className="text-[#1d4ed8]">Lasting Growth.</span>
+            </h1>
 
-              <p className="text-blue-100/90 text-base md:text-lg leading-relaxed mb-8 max-w-lg font-light">
-                We help businesses refine strategy, strengthen operations, scale with
-                confidence through data-driven consulting and practical execution.
+            <div className="flex gap-4 mb-6 border-l-[1.5px] border-[#1d4ed8] pl-4">
+              <p className="text-gray-300 text-[13px] md:text-sm max-w-md leading-relaxed font-light">
+                We transform your vision into a professional US entity that prioritizes functionality and aesthetics. Our skilled team of experts is dedicated to delivering top-notch corporate solutions.
               </p>
+            </div>
 
-              <button className="flex items-center gap-2 bg-white text-[#1d4ed8] px-6 py-3 rounded-full font-semibold hover:bg-gray-50 transition-colors shadow-lg">
-                Book a Call <ArrowRight className="w-5 h-5" />
+            <div className="flex flex-wrap gap-3">
+              <button className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white px-5 py-3 rounded-sm text-xs font-bold flex items-center gap-2 transition-all group">
+                Book a Call <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-3 rounded-sm text-xs font-bold flex items-center gap-2 transition-all group">
+                View Plans <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
 
-          {/* Floating Glassmorphism Stats Card */}
-          <div className="absolute bottom-6 right-8 bg-black/20 backdrop-blur-md border border-white/20 rounded-[20px] p-5 text-white max-w-[240px] shadow-2xl hidden md:block">
-            <div className="flex items-center mb-3">
-              {/* Fake avatars */}
-              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-gray-300 relative z-30 overflow-hidden">
-                <Image src="/hero_business_men.png" alt="User" fill className="object-cover" />
+          {/* Right Side - Carousel Controls Style */}
+          <div className="hidden lg:flex flex-col gap-3">
+            <button className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+              <ChevronRight className="w-5 h-5 text-white" />
+            </button>
+            <button className="w-14 h-14 rounded-full border border-[#1d4ed8] flex items-center justify-center bg-blue-500/10 hover:bg-blue-500/20 transition-colors">
+              <ChevronLeft className="w-5 h-5 text-[#1d4ed8]" />
+            </button>
+          </div>
+
+          {/* Bottom Tabs Selection */}
+          <div className="absolute bottom-0 right-0 hidden md:flex">
+            <div className="bg-white flex shadow-lg">
+              <div className="px-8 py-6 border-r border-gray-100 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition-colors">
+                <Landmark className="w-5 h-5 text-gray-900" />
+                <span className="font-bold text-xs text-gray-900">Commercial</span>
               </div>
-              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-gray-400 relative z-20 -ml-3 overflow-hidden">
-                <Image src="/hero_business_men.png" alt="User" fill className="object-cover object-right" />
+              <div className="px-8 py-6 bg-[#1d4ed8] flex items-center gap-3 cursor-pointer text-white">
+                <Shield className="w-5 h-5" />
+                <span className="font-bold text-xs">Residential</span>
               </div>
-              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-gray-500 relative z-10 -ml-3 overflow-hidden">
-                <Image src="/hero_business_men.png" alt="User" fill className="object-cover object-left" />
-              </div>
-              <div className="w-10 h-10 rounded-full border-2 border-black/20 bg-[#1d4ed8] relative z-0 -ml-3 flex items-center justify-center text-white font-bold text-base">
-                +
+              <div className="px-8 py-6 border-l border-gray-100 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition-colors">
+                <Globe className="w-5 h-5 text-gray-900" />
+                <span className="font-bold text-xs text-gray-900">Custom</span>
               </div>
             </div>
-            <h3 className="text-3xl font-bold mb-1">30k+</h3>
-            <p className="text-xs text-gray-200 leading-snug">
-              Happy clients we have world-wide.
-            </p>
           </div>
-        </main>
-      </div>
+        </div>
+      </section>
 
       <WhyChooseUs />
       <Benefits />
       <Prices />
+      <Contact />
+      <Footer />
     </div>
   );
 }

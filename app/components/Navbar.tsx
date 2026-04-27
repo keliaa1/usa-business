@@ -16,16 +16,16 @@ export default function Navbar() {
   const [activeTab, setActiveTab] = useState(navLinks[0].name);
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-11/12 max-w-6xl z-50">
-      <div className="flex items-center justify-between bg-white rounded-full px-6 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+    <nav className="fixed top-8 left-1/2 -translate-x-1/2 w-11/12 max-w-5xl z-50">
+      <div className="flex items-center justify-between bg-white rounded-full px-5 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
         {/* Logo */}
         <div className="flex-shrink-0 flex items-center">
           <Image
             src="/logo.webp"
             alt="My USA Business"
-            width={120}
-            height={40}
-            className="h-10 w-auto"
+            width={100}
+            height={32}
+            className="h-8 w-auto"
             priority
           />
         </div>
@@ -39,7 +39,7 @@ export default function Navbar() {
               onClick={() => setActiveTab(link.name)}
               className={`${
                 activeTab === link.name ? "text-white font-semibold" : "text-gray-600 hover:text-black font-medium"
-              } relative px-5 py-2.5 rounded-full text-sm transition-colors duration-300`}
+              } relative px-4 py-2 rounded-full text-xs transition-colors duration-300`}
             >
               {activeTab === link.name && (
                 <motion.div
@@ -55,9 +55,9 @@ export default function Navbar() {
 
         {/* Language Dropdown */}
         <div className="flex-shrink-0 flex items-center">
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+          <button className="flex items-center gap-2 px-3.5 py-1.5 border border-gray-200 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
             <span>ES Spanish</span>
-            <ChevronDown className="w-4 h-4 text-gray-500" />
+            <ChevronDown className="w-3.5 h-3.5 text-gray-500" />
           </button>
         </div>
       </div>
