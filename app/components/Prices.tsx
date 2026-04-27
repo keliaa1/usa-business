@@ -1,120 +1,106 @@
-import { Check, ArrowRight } from "lucide-react";
+"use client";
+
+import { Check, ArrowRight, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Prices() {
   const plans = [
     {
-      name: "ESSENTIAL PLAN",
-      price: "$390",
-      period: "one-time",
-      popular: false,
-      features: [
-        "State Filing Fees Included",
-        "Articles of Organization",
-        "Registered Agent Service (1 Yr)",
-        "Standard Processing Speed",
-        "Basic Name Availability Search",
-        "Digital Document Delivery",
-        "Standard Email Support",
-        "Online Document Dashboard",
-      ],
-    },
-    {
-      name: "PREMIUM PLAN",
-      price: "$790",
-      period: "one-time",
+      name: "START NEW BUSINESS",
+      price: "$600",
+      period: "year",
       popular: true,
+      location: "Alabama",
       features: [
-        "Everything in Essential, plus",
-        "Expedited Filing Speed",
-        "Employer Identification Number (EIN)",
-        "Operating Agreement Template",
-        "Banking Resolution",
-        "US Virtual Business Address",
-        "Lifetime Compliance Alerts",
-        "Priority 24/7 Support",
-      ],
-    },
-    {
-      name: "ENTERPRISE PLAN",
-      price: "$1,490",
-      period: "one-time",
-      popular: false,
-      features: [
-        "Everything in Premium, plus",
-        "US Business Bank Account Setup",
-        "Tax Strategy Consultation",
-        "Annual Report Filing",
-        "Custom Operating Agreement",
-        "Apostille & Certification",
-        "Dedicated Account Manager",
-        "Monthly Financial Reports",
+        "Company creation with EIN",
+        "Legal management",
+        "Resident Agent",
+        "Federal and state obligations",
+        "Full payment of expenses",
+        "Personalized attention from an advisor",
       ],
     },
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-gray-50" id="prices">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Transparent Pricing</h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-            Choose the plan that best fits your needs. No hidden fees, no surprises.
-          </p>
+    <section className="py-32 bg-white relative overflow-hidden" id="prices">
+      {/* Background Glow */}
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-[2px] w-12 bg-[#1d4ed8]" />
+            <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
+              PRICING
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[0.95] uppercase">
+            OUR <br />
+            <span className="outline-text">PLANS</span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="flex justify-center relative">
           {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`p-3 rounded-[40px] flex flex-col h-full transition-transform hover:-translate-y-2 duration-300 ${
-                plan.popular ? "bg-[#f3f4f6] shadow-2xl scale-105 z-10" : "bg-white shadow-lg border border-gray-100"
-              }`}
-            >
-              {/* Main White Card */}
-              <div className="bg-white rounded-[32px] p-8 lg:p-10 flex-1 shadow-sm border border-gray-100">
-                <div className="flex justify-between items-center mb-8">
-                  <span className="text-gray-400 text-xs font-bold tracking-widest uppercase">
+            <div key={index} className="relative max-w-md w-full">
+              {/* Vertical Timeline Line */}
+              <div className="absolute left-0 top-0 bottom-0 w-[1.5px] bg-gray-200 ml-[11px] z-0" />
+
+              {/* Section Title */}
+              <div className="relative z-10 flex items-center gap-6 mb-12">
+                <div className="w-6 h-6 rounded-full bg-[#1d4ed8] flex items-center justify-center shadow-[0_0_15px_rgba(29,78,216,0.2)]">
+                  <div className="w-2 h-2 rounded-full bg-white" />
+                </div>
+                <div className="flex items-center gap-4">
+                  <h3 className="text-gray-900 font-bold text-lg tracking-widest uppercase">
                     {plan.name}
-                  </span>
-                  {plan.popular && (
-                    <span className="bg-gray-200/80 text-gray-800 text-xs font-semibold px-4 py-1.5 rounded-full">
-                      Popular
+                  </h3>
+                  {plan.location && (
+                    <span className="bg-blue-50 text-[#1d4ed8] text-[10px] font-bold px-3 py-1 rounded-full border border-blue-100 uppercase tracking-tighter">
+                      {plan.location}
                     </span>
                   )}
+                  <div className="h-[2px] w-8 bg-[#1d4ed8] mt-1" />
                 </div>
-
-                <div className="flex items-baseline mb-8">
-                  <span className="text-6xl font-semibold tracking-tighter text-gray-900">
-                    {plan.price}
-                  </span>
-                  <span className="text-gray-500 font-medium ml-2">/{plan.period}</span>
-                </div>
-
-                <hr className="border-gray-200 mb-8" />
-
-                <ul className="space-y-5">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-4 text-gray-700 font-medium text-[15px]">
-                      <div className="bg-gray-900 text-white rounded-full p-[3px] flex-shrink-0">
-                        <Check className="w-3.5 h-3.5" strokeWidth={3} />
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
               </div>
 
-              {/* Bottom Button Area (Contained within outer gray wrapper) */}
-              <div className="pt-3">
-                <button
-                  className={`w-full py-5 rounded-[28px] flex items-center justify-center gap-2 font-medium text-[17px] transition-all duration-300 ${
-                    plan.popular
-                      ? "bg-gradient-to-b from-gray-800 to-black text-white shadow-xl hover:shadow-2xl hover:opacity-90"
-                      : "bg-white border border-gray-200 text-gray-900 hover:bg-gray-50"
-                  }`}
-                >
-                  Get started <ArrowRight className="w-5 h-5" />
-                </button>
+              {/* Price Card */}
+              <div className="ml-12 mb-8 group">
+                <div className="bg-white border border-gray-100 p-6 rounded-lg transition-all hover:border-[#1d4ed8]/30 hover:shadow-lg shadow-blue-500/5">
+                  <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-2 block">ANNUAL PRICE</span>
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-black text-gray-900">{plan.price}</span>
+                    <span className="text-gray-400 text-xs ml-2">/ {plan.period}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Features Node */}
+              <div className="relative z-10 flex items-start gap-6 ml-0">
+                 <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mt-2">
+                  <div className="w-2 h-2 rounded-full bg-gray-300" />
+                </div>
+                <div className="bg-white border border-gray-100 p-6 rounded-lg flex-1 transition-all hover:border-[#1d4ed8]/20 hover:shadow-lg shadow-blue-500/5">
+                   <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-4 block uppercase">Included Benefits</span>
+                   <ul className="space-y-4">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3 text-gray-600 text-sm font-light">
+                        <Check className="w-3.5 h-3.5 text-[#1d4ed8] flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button className={`w-full mt-8 py-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                    plan.popular 
+                      ? "bg-[#1d4ed8] text-white hover:bg-[#1e40af] shadow-lg shadow-blue-500/20" 
+                      : "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200"
+                  }`}>
+                    GET STARTED <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
