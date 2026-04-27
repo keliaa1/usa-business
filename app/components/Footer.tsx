@@ -1,13 +1,20 @@
 import Image from "next/image";
 import { Mail, Phone, Camera, MessageCircle, Send, Globe, ArrowRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const { t } = useLanguage();
   return (
     <footer className="bg-[#1d4ed8] pt-20 pb-10 px-6 md:px-10 lg:px-12">
       {/* Main Footer Card */}
-      <div className="max-w-7xl mx-auto bg-white rounded-[40px] p-10 md:p-16 shadow-2xl overflow-hidden relative">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-7xl mx-auto bg-white rounded-[40px] p-10 md:p-16 shadow-2xl overflow-hidden relative"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
           {/* Brand & About */}
@@ -95,7 +102,7 @@ export default function Footer() {
             <span className="text-gray-900 font-black text-lg">{t("footer.follow")}</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto mt-10 flex flex-col md:flex-row justify-between items-center text-white/60 text-[10px] font-bold tracking-widest uppercase">

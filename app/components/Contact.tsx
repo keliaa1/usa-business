@@ -1,5 +1,6 @@
 import { Send, MessageCircle } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -16,7 +17,13 @@ export default function Contact() {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="mb-16">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
             <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
@@ -27,11 +34,17 @@ export default function Contact() {
             {t("contact.title1")} <br />
             <span className="outline-text">{t("contact.title2")}</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Contact Form */}
-          <div className="bg-white p-8 md:p-10 border border-gray-100 rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.04)]">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-white p-8 md:p-10 border border-gray-100 rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.04)]"
+          >
             <form className="space-y-6">
               <div>
                 <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">{t("contact.name")}</label>
@@ -61,10 +74,16 @@ export default function Contact() {
                 {t("contact.send")} <Send className="w-4 h-4" />
               </button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Map & Address */}
-          <div className="h-full min-h-[400px] lg:min-h-full relative group">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="h-full min-h-[400px] lg:min-h-full relative group"
+          >
             {/* Stylized Map Placeholder */}
             <div className="absolute inset-0 bg-gray-100 rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
               <iframe 
@@ -79,14 +98,20 @@ export default function Contact() {
             </div>
             
             {/* Address Overlay Card */}
-            <div className="absolute top-6 left-6 right-6 md:right-auto md:w-64 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-xl">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="absolute top-6 left-6 right-6 md:right-auto md:w-64 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-xl"
+            >
               <h4 className="text-gray-900 font-black text-sm mb-2">{t("contact.office")}</h4>
               <p className="text-gray-500 text-xs leading-relaxed">
                 1000 Brickell Ave, Suite 100<br />
                 Miami, FL 33131, USA
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 

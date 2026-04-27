@@ -36,7 +36,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-8 left-1/2 -translate-x-1/2 w-11/12 max-w-5xl z-50">
+    <motion.nav 
+      initial={{ y: -100, x: "-50%", opacity: 0 }}
+      animate={{ y: 0, x: "-50%", opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      className="fixed top-8 left-1/2 w-11/12 max-w-5xl z-50"
+    >
       <div className="flex items-center justify-between bg-white rounded-full px-5 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
         {/* Logo */}
         <div className="flex-shrink-0 flex items-center">
@@ -111,6 +116,6 @@ export default function Navbar() {
           </AnimatePresence>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

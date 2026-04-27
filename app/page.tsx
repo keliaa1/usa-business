@@ -9,9 +9,33 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { useLanguage } from "./context/LanguageContext";
 import { ArrowRight, ChevronLeft, ChevronRight, Globe, Shield, Landmark } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const { t } = useLanguage();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    },
+  };
 
   return (
     <div className="bg-white font-jost">
@@ -20,7 +44,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[90vh] w-full flex items-center overflow-hidden" id="start">
         {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0 z-0">
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
           <Image
             src="/hero_bg.png"
             alt="Business Background"
@@ -29,49 +58,64 @@ export default function Home() {
             className="object-cover brightness-[0.4]"
             priority
           />
-        </div>
+        </motion.div>
 
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10 flex flex-col lg:flex-row justify-between items-center h-full pt-20">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10 flex flex-col lg:flex-row justify-between items-center h-full pt-20"
+        >
           {/* Left Content */}
           <div className="max-w-3xl w-full">
-            <div className="flex items-center gap-2 mb-6 text-white/90">
+            <motion.div variants={itemVariants} className="flex items-center gap-2 mb-6 text-white/90">
               <Globe className="w-4 h-4 text-[#1d4ed8]" />
               <span className="text-xs font-bold tracking-widest uppercase">{t("hero.welcome")}</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-5">
+            <motion.h1 variants={itemVariants} className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-5">
               {t("hero.title").split("Lasting Growth.")[0]}
               <span className="text-[#1d4ed8]">Lasting Growth.</span>
-            </h1>
+            </motion.h1>
 
-            <div className="flex gap-4 mb-6 border-l-[1.5px] border-[#1d4ed8] pl-4">
+            <motion.div variants={itemVariants} className="flex gap-4 mb-6 border-l-[1.5px] border-[#1d4ed8] pl-4">
               <p className="text-gray-300 text-[13px] md:text-sm max-w-md leading-relaxed font-light">
                 {t("hero.desc")}
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-wrap gap-3">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
               <button className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white px-5 py-3 rounded-sm text-xs font-bold flex items-center gap-2 transition-all group">
                 {t("hero.book")} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-3 rounded-sm text-xs font-bold flex items-center gap-2 transition-all group">
                 {t("hero.viewPlans")} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Side - Carousel Controls Style */}
-          <div className="hidden lg:flex flex-col gap-3">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+            className="hidden lg:flex flex-col gap-3"
+          >
             <button className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
               <ChevronRight className="w-5 h-5 text-white" />
             </button>
             <button className="w-14 h-14 rounded-full border border-[#1d4ed8] flex items-center justify-center bg-blue-500/10 hover:bg-blue-500/20 transition-colors">
               <ChevronLeft className="w-5 h-5 text-[#1d4ed8]" />
             </button>
-          </div>
+          </motion.div>
 
           {/* Bottom Tabs Selection */}
-          <div className="absolute bottom-0 right-0 hidden md:flex">
+          <motion.div 
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+            className="absolute bottom-0 right-0 hidden md:flex"
+          >
             <div className="bg-white flex shadow-lg">
               <div className="px-8 py-6 border-r border-gray-100 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition-colors">
                 <Landmark className="w-5 h-5 text-gray-900" />
@@ -86,8 +130,8 @@ export default function Home() {
                 <span className="font-bold text-xs text-gray-900">{t("hero.custom")}</span>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       <WhyChooseUs />

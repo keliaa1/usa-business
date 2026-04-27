@@ -62,7 +62,13 @@ export default function WhyChooseUs() {
       
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-16">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16"
+        >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
             <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
@@ -73,12 +79,18 @@ export default function WhyChooseUs() {
             {t("whyUs.title1")} <br />
             <span className="outline-text">{t("whyUs.title2")}</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-center">
           
           {/* Left Column - Circular Layout */}
-          <div className="relative w-full max-w-[480px] aspect-square mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative w-full max-w-[480px] aspect-square mx-auto"
+          >
             {/* The thin rotating dashed circle */}
             <div className="absolute inset-8 rounded-full border-2 border-dashed border-gray-200 animate-[spin_40s_linear_infinite]" />
 
@@ -123,12 +135,19 @@ export default function WhyChooseUs() {
                 </button>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Right Column - Stats Grid */}
           <div className="grid grid-cols-2 gap-x-6 gap-y-12 pl-0 lg:pl-10">
             {stats.map((stat, idx) => (
-              <div key={idx} className="flex flex-col">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="flex flex-col"
+              >
                 <div className="flex items-start mb-1">
                   <span className="text-3xl lg:text-4xl font-bold text-gray-900 leading-none">
                     {stat.value}
@@ -138,7 +157,7 @@ export default function WhyChooseUs() {
                 <span className="text-sm font-semibold text-gray-500 tracking-wider">
                   {stat.label}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
 

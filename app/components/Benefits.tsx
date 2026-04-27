@@ -57,8 +57,13 @@ export default function Benefits() {
 
       <div className="max-w-5xl mx-auto px-8 lg:px-12 relative z-10">
         {/* Header Area */}
-        <div className="flex justify-between items-end mb-12">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="flex items-center gap-3 mb-4">
               <div className="h-[2px] w-12 bg-[#1d4ed8]" />
               <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
@@ -69,10 +74,16 @@ export default function Benefits() {
               {t("benefits.title1")} <br />
               <span className="outline-text">{t("benefits.title2")}</span>
             </h2>
-          </div>
+          </motion.div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-4">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex items-center gap-4"
+          >
             <button 
               onClick={prev}
               className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -95,7 +106,7 @@ export default function Benefits() {
             >
               <ArrowRight className="w-4 h-4 text-gray-500" />
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Carousel Content */}

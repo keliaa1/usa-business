@@ -32,7 +32,13 @@ export default function Prices() {
       <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="mb-20">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-20"
+        >
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
             <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
@@ -43,19 +49,38 @@ export default function Prices() {
             {t("prices.title1")} <br />
             <span className="outline-text">{t("prices.title2")}</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="flex justify-center relative">
           {plans.map((plan, index) => (
-            <div key={index} className="relative max-w-md w-full">
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="relative max-w-md w-full"
+            >
               {/* Vertical Timeline Line */}
-              <div className="absolute left-0 top-0 bottom-0 w-[1.5px] bg-gray-200 ml-[11px] z-0" />
+              <motion.div 
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.5 }}
+                className="absolute left-0 top-0 bottom-0 w-[1.5px] bg-gray-200 ml-[11px] z-0" 
+              />
 
               {/* Section Title */}
               <div className="relative z-10 flex items-center gap-6 mb-12">
-                <div className="w-6 h-6 rounded-full bg-[#1d4ed8] flex items-center justify-center shadow-[0_0_15px_rgba(29,78,216,0.2)]">
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.6 }}
+                  className="w-6 h-6 rounded-full bg-[#1d4ed8] flex items-center justify-center shadow-[0_0_15px_rgba(29,78,216,0.2)]"
+                >
                   <div className="w-2 h-2 rounded-full bg-white" />
-                </div>
+                </motion.div>
                 <div className="flex items-center gap-4">
                   <h3 className="text-gray-900 font-bold text-lg tracking-widest uppercase">
                     {plan.name}
@@ -70,7 +95,13 @@ export default function Prices() {
               </div>
 
               {/* Price Card */}
-              <div className="ml-12 mb-8 group">
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="ml-12 mb-8 group"
+              >
                 <div className="bg-white border border-gray-100 p-6 rounded-lg transition-all hover:border-[#1d4ed8]/30 hover:shadow-lg shadow-blue-500/5">
                   <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-2 block">{t("prices.annualPrice")}</span>
                   <div className="flex items-baseline">
@@ -78,10 +109,16 @@ export default function Prices() {
                     <span className="text-gray-400 text-xs ml-2">/ {plan.period}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Features Node */}
-              <div className="relative z-10 flex items-start gap-6 ml-0">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1 }}
+                className="relative z-10 flex items-start gap-6 ml-0"
+              >
                  <div className="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center mt-2">
                   <div className="w-2 h-2 rounded-full bg-gray-300" />
                 </div>
@@ -89,10 +126,17 @@ export default function Prices() {
                    <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-4 block uppercase">{t("prices.included")}</span>
                    <ul className="space-y-4">
                     {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-3 text-gray-600 text-sm font-light">
+                      <motion.li 
+                        key={i} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: 1.2 + (i * 0.1) }}
+                        className="flex items-center gap-3 text-gray-600 text-sm font-light"
+                      >
                         <Check className="w-3.5 h-3.5 text-[#1d4ed8] flex-shrink-0" />
                         {feature}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
 
@@ -104,8 +148,8 @@ export default function Prices() {
                     {t("prices.getStarted")} <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>
