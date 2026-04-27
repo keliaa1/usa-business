@@ -2,22 +2,25 @@
 
 import { Check, ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Prices() {
+  const { t } = useLanguage();
+  
   const plans = [
     {
-      name: "START NEW BUSINESS",
+      name: t("prices.planName"),
       price: "$600",
-      period: "year",
+      period: t("prices.period"),
       popular: true,
       location: "Alabama",
       features: [
-        "Company creation with EIN",
-        "Legal management",
-        "Resident Agent",
-        "Federal and state obligations",
-        "Full payment of expenses",
-        "Personalized attention from an advisor",
+        t("prices.f1"),
+        t("prices.f2"),
+        t("prices.f3"),
+        t("prices.f4"),
+        t("prices.f5"),
+        t("prices.f6"),
       ],
     },
   ];
@@ -33,12 +36,12 @@ export default function Prices() {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
             <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
-              PRICING
+              {t("prices.subheader")}
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[0.95] uppercase">
-            OUR <br />
-            <span className="outline-text">PLANS</span>
+            {t("prices.title1")} <br />
+            <span className="outline-text">{t("prices.title2")}</span>
           </h2>
         </div>
 
@@ -69,7 +72,7 @@ export default function Prices() {
               {/* Price Card */}
               <div className="ml-12 mb-8 group">
                 <div className="bg-white border border-gray-100 p-6 rounded-lg transition-all hover:border-[#1d4ed8]/30 hover:shadow-lg shadow-blue-500/5">
-                  <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-2 block">ANNUAL PRICE</span>
+                  <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-2 block">{t("prices.annualPrice")}</span>
                   <div className="flex items-baseline">
                     <span className="text-4xl font-black text-gray-900">{plan.price}</span>
                     <span className="text-gray-400 text-xs ml-2">/ {plan.period}</span>
@@ -83,7 +86,7 @@ export default function Prices() {
                   <div className="w-2 h-2 rounded-full bg-gray-300" />
                 </div>
                 <div className="bg-white border border-gray-100 p-6 rounded-lg flex-1 transition-all hover:border-[#1d4ed8]/20 hover:shadow-lg shadow-blue-500/5">
-                   <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-4 block uppercase">Included Benefits</span>
+                   <span className="text-[#1d4ed8] text-xs font-bold tracking-widest mb-4 block uppercase">{t("prices.included")}</span>
                    <ul className="space-y-4">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-3 text-gray-600 text-sm font-light">
@@ -98,7 +101,7 @@ export default function Prices() {
                       ? "bg-[#1d4ed8] text-white hover:bg-[#1e40af] shadow-lg shadow-blue-500/20" 
                       : "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200"
                   }`}>
-                    GET STARTED <ArrowRight className="w-3 h-3" />
+                    {t("prices.getStarted")} <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
               </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import WhyChooseUs from "./components/WhyChooseUs";
@@ -5,9 +7,12 @@ import Benefits from "./components/Benefits";
 import Prices from "./components/Prices";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { useLanguage } from "./context/LanguageContext";
 import { ArrowRight, ChevronLeft, ChevronRight, Globe, Shield, Landmark } from "lucide-react";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="bg-white font-jost">
       <Navbar />
@@ -31,26 +36,26 @@ export default function Home() {
           <div className="max-w-3xl w-full">
             <div className="flex items-center gap-2 mb-6 text-white/90">
               <Globe className="w-4 h-4 text-[#1d4ed8]" />
-              <span className="text-xs font-bold tracking-widest uppercase">Welcome to My USA Business</span>
+              <span className="text-xs font-bold tracking-widest uppercase">{t("hero.welcome")}</span>
             </div>
 
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-5">
-              Start your business <br />
-              for <span className="text-[#1d4ed8]">Lasting Growth.</span>
+              {t("hero.title").split("Lasting Growth.")[0]}
+              <span className="text-[#1d4ed8]">Lasting Growth.</span>
             </h1>
 
             <div className="flex gap-4 mb-6 border-l-[1.5px] border-[#1d4ed8] pl-4">
               <p className="text-gray-300 text-[13px] md:text-sm max-w-md leading-relaxed font-light">
-                We transform your vision into a professional US entity that prioritizes functionality and aesthetics. Our skilled team of experts is dedicated to delivering top-notch corporate solutions.
+                {t("hero.desc")}
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
               <button className="bg-[#1d4ed8] hover:bg-[#1e40af] text-white px-5 py-3 rounded-sm text-xs font-bold flex items-center gap-2 transition-all group">
-                Book a Call <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                {t("hero.book")} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button className="bg-white hover:bg-gray-100 text-gray-900 px-5 py-3 rounded-sm text-xs font-bold flex items-center gap-2 transition-all group">
-                View Plans <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                {t("hero.viewPlans")} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -70,15 +75,15 @@ export default function Home() {
             <div className="bg-white flex shadow-lg">
               <div className="px-8 py-6 border-r border-gray-100 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition-colors">
                 <Landmark className="w-5 h-5 text-gray-900" />
-                <span className="font-bold text-xs text-gray-900">Commercial</span>
+                <span className="font-bold text-xs text-gray-900">{t("hero.commercial")}</span>
               </div>
               <div className="px-8 py-6 bg-[#1d4ed8] flex items-center gap-3 cursor-pointer text-white">
                 <Shield className="w-5 h-5" />
-                <span className="font-bold text-xs">Residential</span>
+                <span className="font-bold text-xs">{t("hero.residential")}</span>
               </div>
               <div className="px-8 py-6 border-l border-gray-100 flex items-center gap-3 cursor-pointer hover:bg-gray-50 transition-colors">
                 <Globe className="w-5 h-5 text-gray-900" />
-                <span className="font-bold text-xs text-gray-900">Custom</span>
+                <span className="font-bold text-xs text-gray-900">{t("hero.custom")}</span>
               </div>
             </div>
           </div>

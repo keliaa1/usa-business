@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Mail, Phone, Camera, MessageCircle, Send, Globe, ArrowRight } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-[#1d4ed8] pt-20 pb-10 px-6 md:px-10 lg:px-12">
       {/* Main Footer Card */}
@@ -19,19 +21,19 @@ export default function Footer() {
                 className="h-10 w-auto"
               />
               <p className="text-[#1d4ed8] text-xs font-bold mt-2 uppercase tracking-widest">
-                Start your US journey with confidence
+                {t("footer.slogan")}
               </p>
             </div>
             
-            <h4 className="text-gray-900 font-bold text-lg mb-4">About Us</h4>
+            <h4 className="text-gray-900 font-bold text-lg mb-4">{t("footer.about")}</h4>
             <p className="text-gray-500 text-sm leading-relaxed font-light">
-              We help entrepreneurs worldwide establish their business footprint in the United States with expert guidance and secure corporate solutions.
+              {t("footer.aboutDesc")}
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-gray-900 font-bold text-lg mb-6">Services</h4>
+            <h4 className="text-gray-900 font-bold text-lg mb-6">{t("footer.services")}</h4>
             <ul className="space-y-4">
               {["Company Creation", "EIN Registration", "Bank Accounts", "Legal Management", "Tax Compliance"].map((link) => (
                 <li key={link}>
@@ -45,7 +47,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-gray-900 font-bold text-lg mb-6">Company</h4>
+            <h4 className="text-gray-900 font-bold text-lg mb-6">{t("footer.company")}</h4>
             <ul className="space-y-4">
               {["Why choose us?", "Our Services", "Pricing Plans", "Privacy Policy", "Contact Us"].map((link) => (
                 <li key={link}>
@@ -59,7 +61,7 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <div>
-            <h4 className="text-gray-900 font-bold text-lg mb-6">Contact us</h4>
+            <h4 className="text-gray-900 font-bold text-lg mb-6">{t("footer.contact")}</h4>
             <div className="space-y-4 mb-8">
               <div className="flex flex-col">
                 <span className="text-gray-900 font-bold text-sm">Call :</span>
@@ -90,7 +92,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <span className="text-gray-900 font-black text-lg">Follow Us</span>
+            <span className="text-gray-900 font-black text-lg">{t("footer.follow")}</span>
           </div>
         </div>
       </div>
@@ -98,11 +100,11 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto mt-10 flex flex-col md:flex-row justify-between items-center text-white/60 text-[10px] font-bold tracking-widest uppercase">
         <div className="flex gap-8 mb-4 md:mb-0">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-white transition-colors">{t("footer.privacy")}</a>
           <span className="opacity-20">|</span>
-          <a href="#" className="hover:text-white transition-colors">Our History</a>
+          <a href="#" className="hover:text-white transition-colors">{t("footer.history")}</a>
           <span className="opacity-20">|</span>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-white transition-colors">{t("footer.terms")}</a>
         </div>
         <p>© 2026 MY USA BUSINESS. ALL RIGHTS RESERVED.</p>
       </div>

@@ -4,43 +4,42 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-
-const benefits = [
-  {
-    id: "01",
-    subtitle: "PAYMENTS",
-    title: "RECEIVE PAYMENTS IN DOLLARS",
-    description:
-      "Offer your customers all payment methods: credit or debit card, cryptocurrency, Zelle and many more, so you can receive your payments quickly and securely, no matter which channel your customers choose.",
-    image: "/mockup.png",
-  },
-  {
-    id: "02",
-    subtitle: "BANKING",
-    title: "OPENING A BANK ACCOUNT",
-    description:
-      "At My USA Business, we offer easy and secure solutions for opening US bank accounts, offshore accounts, and crypto accounts for both individuals and businesses. Open a US account to access global financial services, enjoy the flexibility of offshore accounts, or manage your digital assets with crypto accounts.",
-    image: "/bank_mockup.png",
-  },
-  {
-    id: "03",
-    subtitle: "EXPANSION",
-    title: "INTERNATIONAL MARKET EXPANSION",
-    description:
-      "Create or expand your business into the international market. We provide you with the tools and support you need as an entrepreneur, business owner, or investor to achieve your goals and discover endless opportunities. Access international financial markets and take your business to the next level with us.",
-    image: "/global_mockup.png",
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Benefits() {
+  const { t } = useLanguage();
   const [active, setActive] = useState(0);
+
+  const benefits = [
+    {
+      id: "01",
+      subtitle: "PAYMENTS",
+      title: t("benefits.b1.title"),
+      description: t("benefits.b1.desc"),
+      image: "/mockup.png",
+    },
+    {
+      id: "02",
+      subtitle: "BANKING",
+      title: t("benefits.b2.title"),
+      description: t("benefits.b2.desc"),
+      image: "/bank_mockup.png",
+    },
+    {
+      id: "03",
+      subtitle: "EXPANSION",
+      title: t("benefits.b3.title"),
+      description: t("benefits.b3.desc"),
+      image: "/global_mockup.png",
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % benefits.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [benefits.length]);
 
   const next = () => setActive((prev) => (prev + 1) % benefits.length);
   const prev = () => setActive((prev) => (prev - 1 + benefits.length) % benefits.length);
@@ -63,12 +62,12 @@ export default function Benefits() {
             <div className="flex items-center gap-3 mb-4">
               <div className="h-[2px] w-12 bg-[#1d4ed8]" />
               <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
-                PORTFOLIO
+                {t("benefits.subheader")}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[0.95] uppercase">
-              SELECTED <br />
-              <span className="outline-text">BENEFITS</span>
+              {t("benefits.title1")} <br />
+              <span className="outline-text">{t("benefits.title2")}</span>
             </h2>
           </div>
 
@@ -130,7 +129,7 @@ export default function Benefits() {
                       <ArrowRight className="w-4 h-4 text-white -rotate-45 group-hover:rotate-0 transition-transform" />
                     </div>
                     <span className="text-[10px] font-bold tracking-widest uppercase text-gray-900">
-                      LEARN MORE
+                      {t("benefits.learnMore")}
                     </span>
                   </button>
                 </div>
