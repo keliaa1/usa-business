@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "Start your own business in the United States as a foreigner with our expert guidance.",
 };
 
+import { LanguageProvider } from "./context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +25,11 @@ export default function RootLayout({
       lang="en"
       className={`${jost.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-jost">{children}</body>
+      <body className="min-h-full flex flex-col font-jost">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

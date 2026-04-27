@@ -3,44 +3,46 @@
 import { useState, useEffect } from "react";
 import { Landmark, Shield, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const features = [
-  {
-    id: 0,
-    title: "Business Bank Account",
-    description: "An FDIC-protected business bank account provides a secure foundation for your financial operations, ensuring funds are protected and offering easy access to banking services worldwide.",
-    icon: Landmark,
-  },
-  {
-    id: 1,
-    title: "Asset Protection",
-    description: "We prioritize privacy so your competition remains at a disadvantage. Names of owners and directors will not be disclosed in public records or indexed by internet search engines.",
-    icon: Shield,
-  },
-  {
-    id: 2,
-    title: "Privacy Protection",
-    description: "Our high standard of privacy ensures competitors never get ahead. Owners and directors will never appear in public records, allowing you to operate with total peace of mind.",
-    icon: Lock,
-  },
-];
-
-const stats = [
-  { value: "100", label: "HAPPY CLIENTS" },
-  { value: "6", label: "YEARS OF EXPERIENCE" },
-  { value: "16", label: "MARKETING CUSTOMERS" },
-  { value: "110", label: "SUCCESSFUL PROJECTS" },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function WhyChooseUs() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const features = [
+    {
+      id: 0,
+      title: t("whyUs.feature1.title"),
+      description: t("whyUs.feature1.desc"),
+      icon: Landmark,
+    },
+    {
+      id: 1,
+      title: t("whyUs.feature2.title"),
+      description: t("whyUs.feature2.desc"),
+      icon: Shield,
+    },
+    {
+      id: 2,
+      title: t("whyUs.feature3.title"),
+      description: t("whyUs.feature3.desc"),
+      icon: Lock,
+    },
+  ];
+
+  const stats = [
+    { value: "100", label: t("whyUs.stat1") },
+    { value: "6", label: t("whyUs.stat2") },
+    { value: "16", label: t("whyUs.stat3") },
+    { value: "110", label: t("whyUs.stat4") },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % features.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [features.length]);
 
   // Math: x = r * cos(theta), y = r * sin(theta)
   // Hardcoded the 6 positions for perfect alignment in percentage:
@@ -64,12 +66,12 @@ export default function WhyChooseUs() {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
             <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
-              WHY CHOOSE US
+              {t("whyUs.subheader")}
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[0.95] uppercase">
-            CHOOSE <br />
-            <span className="outline-text">OUR SERVICE</span>
+            {t("whyUs.title1")} <br />
+            <span className="outline-text">{t("whyUs.title2")}</span>
           </h2>
         </div>
 
