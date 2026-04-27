@@ -1,8 +1,8 @@
-"use client";
-
 import { Send, MessageCircle } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   return (
     <section className="py-32 bg-white relative overflow-hidden" id="contact">
       {/* Grid Background */}
@@ -20,12 +20,12 @@ export default function Contact() {
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#1d4ed8]" />
             <span className="text-[#1d4ed8] font-bold tracking-widest text-xs uppercase">
-              CONTACT US
+              {t("contact.subheader")}
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[0.95] uppercase">
-            GET IN <br />
-            <span className="outline-text">TOUCH</span>
+            {t("contact.title1")} <br />
+            <span className="outline-text">{t("contact.title2")}</span>
           </h2>
         </div>
 
@@ -34,15 +34,15 @@ export default function Contact() {
           <div className="bg-white p-8 md:p-10 border border-gray-100 rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.04)]">
             <form className="space-y-6">
               <div>
-                <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">Name</label>
+                <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">{t("contact.name")}</label>
                 <input 
                   type="text" 
-                  placeholder="Your full name"
+                  placeholder={t("contact.name")}
                   className="w-full bg-gray-50 border border-gray-100 rounded-xl px-5 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]/10 transition-all"
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">Email</label>
+                <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">{t("contact.email")}</label>
                 <input 
                   type="email" 
                   placeholder="name@example.com"
@@ -50,15 +50,15 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">Message</label>
+                <label className="block text-[10px] font-black tracking-widest text-gray-400 uppercase mb-2 ml-1">{t("contact.message")}</label>
                 <textarea 
                   rows={4}
-                  placeholder="How can we help you?"
+                  placeholder={t("contact.message")}
                   className="w-full bg-gray-50 border border-gray-100 rounded-xl px-5 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#1d4ed8]/10 transition-all resize-none"
                 />
               </div>
               <button className="w-full bg-[#1d4ed8] hover:bg-[#1e40af] text-white font-black py-5 rounded-xl transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-3 uppercase tracking-widest text-xs">
-                SEND MESSAGE <Send className="w-4 h-4" />
+                {t("contact.send")} <Send className="w-4 h-4" />
               </button>
             </form>
           </div>
@@ -80,7 +80,7 @@ export default function Contact() {
             
             {/* Address Overlay Card */}
             <div className="absolute top-6 left-6 right-6 md:right-auto md:w-64 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-xl">
-              <h4 className="text-gray-900 font-black text-sm mb-2">MIAMI OFFICE</h4>
+              <h4 className="text-gray-900 font-black text-sm mb-2">{t("contact.office")}</h4>
               <p className="text-gray-500 text-xs leading-relaxed">
                 1000 Brickell Ave, Suite 100<br />
                 Miami, FL 33131, USA
