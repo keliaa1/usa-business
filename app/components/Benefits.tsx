@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft } from "lucide-react";
@@ -34,6 +34,13 @@ const benefits = [
 
 export default function Benefits() {
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % benefits.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const next = () => setActive((prev) => (prev + 1) % benefits.length);
   const prev = () => setActive((prev) => (prev - 1 + benefits.length) % benefits.length);

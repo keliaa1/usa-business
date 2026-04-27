@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Landmark, Shield, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -34,6 +34,13 @@ const stats = [
 
 export default function WhyChooseUs() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % features.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Math: x = r * cos(theta), y = r * sin(theta)
   // Hardcoded the 6 positions for perfect alignment in percentage:
